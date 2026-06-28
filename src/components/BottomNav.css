@@ -1,0 +1,121 @@
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--border-light);
+  padding: 8px 0;
+  transition: all 0.3s ease;
+}
+
+.light-mode .bottom-nav {
+  background: rgba(255, 255, 255, 0.8);
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+.bottom-nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.nav-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 12px 8px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.nav-item:hover {
+  color: var(--accent-primary);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.nav-item.active {
+  color: var(--accent-primary);
+}
+
+.nav-icon {
+  transition: all 0.3s ease;
+  margin-bottom: 4px;
+}
+
+.nav-item.active .nav-icon {
+  filter: drop-shadow(0 0 8px var(--accent-primary));
+}
+
+.nav-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  opacity: 0;
+  animation: indicatorPulse 0.3s ease forwards;
+}
+
+@keyframes indicatorPulse {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-label {
+    font-size: 10px;
+  }
+
+  .nav-item {
+    padding: 10px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-label {
+    display: none;
+  }
+
+  .nav-item {
+    padding: 10px 8px;
+  }
+
+  .nav-icon {
+    margin-bottom: 0;
+  }
+}
